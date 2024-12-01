@@ -5,11 +5,11 @@ import pickle
 
 app = Flask(__name__)
 
-# Carregar modelo e vetorizador
+
 with open('model.pkl', 'rb') as model_file:
     model, vectorizer = pickle.load(model_file)
 
-# Função de pré-processamento
+
 def preprocess_text(text):
     import re
     import unicodedata

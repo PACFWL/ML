@@ -1,0 +1,16 @@
+# Ignorar arquivos e pastas do ambiente virtual
+venv/
+__pycache__/
+*.pyc
+
+# Ignorar arquivos de modelo e datasets grandes (se necessário)
+*.h5
+*.pkl
+*.csv
+
+# Ignorar arquivos temporários e de sistema
+*.log
+*.bak
+*.tmp
+.DS_Store
+Thumbs.db

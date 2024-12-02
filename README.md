@@ -114,7 +114,8 @@ Este projeto implementa um sistema de classificação de sentimentos utilizando 
 
 ### Desempenho do Modelo
 - **Acurácia média**: 0.9219  
-- **F1-Score médio**: 0.9210 
+- **F1-Score médio**: 0.9210
+  
 *Obs.: Métricas calculadas usando validação cruzada com 5 folds.*
 
 ---

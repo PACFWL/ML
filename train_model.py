@@ -4,6 +4,7 @@ import unicodedata
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import make_scorer, accuracy_score, precision_score, recall_score, f1_score
+from sklearn.preprocessing import LabelEncoder
 import pickle
 import numpy as np
 from collections import Counter
@@ -54,9 +55,16 @@ def texts_to_bow(texts, vocab):
     return np.array(vectors)
 
 
-data = pd.read_csv('reviews.csv')
-data['content'] = data['content'].apply(preprocess_text)
 
+data = pd.read_csv('reviews.csv')
+
+
+data = data.dropna(subset=['content', 'classification']) 
+data['content'] = data['content'].apply(str).apply(preprocess_text)
+
+
+label_encoder = LabelEncoder()
+data['classification'] = label_encoder.fit_transform(data['classification'])
 
 X = data['content']
 y = data['classification']
@@ -66,7 +74,7 @@ vocab = build_vocabulary(X)
 X_bow = texts_to_bow(X, vocab)
 
 
-model = LogisticRegression(max_iter=1000)
+model = LogisticRegression(max_iter=1000, class_weight='balanced')
 
 
 scoring = {
@@ -76,12 +84,10 @@ scoring = {
     'f1': make_scorer(f1_score, average='weighted')
 }
 
-
 cv_results = {}
 for metric, scorer in scoring.items():
     scores = cross_val_score(model, X_bow, y, cv=5, scoring=scorer)
     cv_results[metric] = scores
-
 
 print("Resultados da validação cruzada:")
 for metric, scores in cv_results.items():
@@ -92,6 +98,6 @@ model.fit(X_bow, y)
 
 
 with open('model.pkl', 'wb') as model_file:
-    pickle.dump((model, vocab), model_file)
+    pickle.dump((model, vocab, label_encoder), model_file)
 
 print('Modelo treinado e salvo com sucesso!')

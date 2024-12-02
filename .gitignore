@@ -7,7 +7,8 @@ __pycache__/
 *.h5
 *.pkl
 *.csv
-
+*.txt
+*.py
 # Ignorar arquivos temporários e de sistema
 *.log
 *.bak

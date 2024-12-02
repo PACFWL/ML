@@ -65,30 +65,30 @@ def clean_non_textual_elements(text):
     text = re.sub(r'#\w+', '<hashtag>', text)        
     return text
 
-# Carregar mapeamentos de emojis e gírias
+
 emoji_map = load_emoji_map('emoji_map.csv')
 giria_map = load_giria_map('giria_map.csv')
 
-# Função de pré-processamento do texto
+
 def preprocess_text(text):
-    # Substituir emojis
+    
     text = replace_emojis(text, emoji_map)
-    # Substituir gírias
+  
     text = replace_girias(text, giria_map)
-    # Normalizar palavras com letras repetidas
+    
     text = normalize_repeated_characters(text)
-    # Remover elementos não textuais
+    
     text = clean_non_textual_elements(text)
-    # Normalizar texto e remover caracteres desnecessários
+   
     text = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore').decode('utf-8', 'ignore')
     text = re.sub(r'[^a-zA-Z0-9\s]', '', text)
     text = text.lower()
     text = re.sub(r'\s+', ' ', text).strip()
-    # Remover stopwords
+    
     text = remove_stopwords(text)
     return text
 
-# Converter texto em vetor Bag-of-Words
+
 def text_to_bow(text, vocab):
     word_counts = Counter(text.split())
     vector = np.zeros(len(vocab))
@@ -97,7 +97,7 @@ def text_to_bow(text, vocab):
             vector[vocab[word]] = count
     return vector.reshape(1, -1)
 
-# Endpoint para classificação
+
 @app.route('/classify', methods=['POST'])
 def classify():
     data = request.get_json()

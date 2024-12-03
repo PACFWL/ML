@@ -36,7 +36,7 @@ Este projeto implementa um sistema de classificação de sentimentos utilizando 
 
 1. **Clone o repositório**:
    ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
+   git clone https://github.com/PACFWL/ML.git
    cd seu-repositorio
 
 2. **Crie um ambiente virtual Python**:
@@ -90,15 +90,22 @@ Este projeto implementa um sistema de classificação de sentimentos utilizando 
 
 ```plaintext
 .
-├── app.py                # Código da API Flask
-├── train_model.py        # Código para treinar o modelo
-├── requirements.txt      # Dependências do projeto
-├── emoji_map.csv         # Mapeamento de emojis
-├── giria_map.csv         # Mapeamento de gírias
-├── reviews.csv           # Dataset de treinamento
-├── model.pkl             # Modelo treinado
-├── venv/                 # Ambiente virtual Python
-└── README.md             # Documentação do projeto
+├── app.py                       # Código da API Flask
+├── train_model.py               # Código para treinar o modelo
+├── requirements.txt             # Dependências do projeto
+├── emoji_map.csv                # Mapeamento de emojis
+├── giria_map.csv                # Mapeamento de gírias
+├── reviews.csv                  # Dataset de treinamento
+├── model.pkl                    # Modelo treinado
+├── venv/                        # Ambiente virtual Python
+├── test/                        # Scripts de teste do modelo
+│   ├── confusion_matrix.py          # Geração de matriz de confusão
+│   ├── learning_curve.py            # Geração da curva de aprendizado
+│   ├── normalize_confusion_matrix.py # Normalização da matriz de confusão
+│   ├── prediction_error.py          # Erro de predição
+│   ├── ROC-AUC(multi-class).py      # Curva ROC-AUC para múltiplas classes
+└── README.md                  # Documentação do projeto
+
 ```
 
 ---
@@ -106,8 +113,9 @@ Este projeto implementa um sistema de classificação de sentimentos utilizando 
 ## **📊 Resultados**
 
 ### Desempenho do Modelo
-- **Acurácia média**: 0.85  
-- **F1-Score médio**: 0.82  
+- **Acurácia média**: 0.9219  
+- **F1-Score médio**: 0.9210
+  
 *Obs.: Métricas calculadas usando validação cruzada com 5 folds.*
 
 ---
@@ -139,7 +147,7 @@ Este projeto está sob a licença MIT. Consulte o arquivo `LICENSE` para mais de
 - Incluída a pasta `venv` na estrutura do projeto.
 - Orientações claras sobre como ativar o ambiente virtual e instalar as dependências.
 ```
-Agora você pode salvar esse conteúdo no arquivo `README.md` no seu repositório do GitHub. 😊
+
 
 
 

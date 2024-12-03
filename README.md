@@ -147,7 +147,7 @@ Este projeto está sob a licença MIT. Consulte o arquivo `LICENSE` para mais de
 - Incluída a pasta `venv` na estrutura do projeto.
 - Orientações claras sobre como ativar o ambiente virtual e instalar as dependências.
 ```
-Agora você pode salvar esse conteúdo no arquivo `README.md` no seu repositório do GitHub. 😊
+
 
 
 
